@@ -2,13 +2,13 @@
 <h1>Contact Us</h1>
 
 <%= form_tag contact_path do %>
-  <div>
+  <div class = "form-group">
     <%= label_tag :name %>
     <%= text_field_tag :name %>
-  </div>
-  <div>
-    <%= label_tag :message %>
-    <%= text_area_tag :message %>
+    <div>
+      <%= label_tag :message %>
+      <%= text_area_tag :message %>
+    </div>
   </div>
   <%= submit_tag "Contact Us!" %>
 <% end %>

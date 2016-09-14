@@ -12,5 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require chosen-jquery
 //= require turbolinks
 //= require_tree .
+
+$(window).keypress(function(event) {
+      if (event.which == 13) {
+          event.preventDefault();
+          $("form").submit();
+      }
+      console.log(event.which);
+  });
+
+  $('#search').click(function(){
+    $('#search-wrapper').toggleClass('moved');
+  })

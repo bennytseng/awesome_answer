@@ -3,17 +3,27 @@ Rails.application.routes.draw do
   #DSL - domain specific language ;; it is just ruby wrtten in a special way for a special purpose (routes in this case)
   resources :questions do
     resources :answers, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
+    resources :votes, only: [:create, :update, :destroy]
   end
 
   resources :users, only: [:new, :create]
-  
+
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
+
   get "/home" => "welcome#index"
   get "/about" => "welcome#about_me", as: :about_us
   get "/contact" => "contact#new", as: :new_contact
   post "/contact" => "contact#create", as: :contact
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :questions, only: [:index, :show, :create]
+    end
+  end
+
   # get "/questions/new" => "questions#new",    as: :new_question
   # post "/questions"    => "questions#create", as: :questions
   # get "/questions/:id" => "questions#show",   as: :question

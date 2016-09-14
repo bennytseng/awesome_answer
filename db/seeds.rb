@@ -6,3 +6,10 @@ QUESTIONS_TO_CREATE.times do
 end
 
 puts Cowsay.say "Created #{QUESTIONS_TO_CREATE} questions"
+
+["Sports", "Tech", "News", "Cats", "Dogs"].each do |t|
+  Tag.create name: t
+end
+
+10.times { Tag.create name: Faker::Superhero.name }
+puts Cowsay.say "Created #{QUESTIONS_TO_CREATE} questions and 15 tags"
